@@ -1,74 +1,209 @@
-
-.storefront .container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    padding: 20px;
+/* ✅ Storefront Layout */
+.storefront {
+  /* width: 100%; */
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
 }
-.product-image img {
-    width: 100%;
-    border-radius: 8px;
+
+/* 📱 Mobile Layout - Stacked Structure */
+.storefront .container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "breadcrumbs"
+    "name"
+    "price"
+    "image"
+    "info"
+    "bundle";
+  gap: 20px;
+}
+
+/* 🔹 Grid Areas */
+.breadcrumbs {
+  grid-area: breadcrumbs;
+}
+.product-image {
+  grid-area: image;
 }
 .product-info {
-    display: flex;
-    flex-direction: column;
+  grid-area: info;
+}
+.bundle-section {
+  grid-area: bundle;
+}
+.product-name {
+  grid-area: name;
 }
 .price {
-    font-size: 24px;
-    color: #2D3E50;
-    font-weight: bold;
+  grid-area: price;
 }
+
+/* 🖥️ Desktop Layout - Proper Side-by-Side Structure */
+@media (min-width: 1024px) {
+  .storefront .container {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "image breadcrumbs"
+      "image name"
+      "image price"
+      "image bundle"
+      "image info";
+
+    align-items: start;
+  }
+}
+
+/* ✅ Breadcrumbs */
+.breadcrumbs {
+  font-size: 14px;
+  color: #666;
+  display: flex;
+  gap: 5px;
+}
+
+.breadcrumbs a {
+  color: #2d3e50;
+  text-decoration: none;
+}
+
+.breadcrumbs a::after {
+  content: " > ";
+  color: #aaa;
+}
+
+.breadcrumbs a:last-child::after {
+  content: "";
+}
+
+/* ✅ Product Image */
+.product-image img {
+  width: 100%;
+  display: block;
+  border-radius: 8px;
+}
+
+/* 🛒 Product Info */
+.product-info h1 {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.price {
+  font-size: 1.5rem;
+  color: #2d3e50;
+  font-weight: bold;
+}
+
+/* 🎛️ Quantity Selector */
+.quantity-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.quantity-container button {
+  background: #2d3e50;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 18px;
+  border-radius: 5px;
+}
+
+/* 🛍️ Add to Cart Button */
 .add-to-cart {
-    margin-top: 20px;
-    padding: 10px;
-    background: #2D3E50;
-    color: white;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
+  width: 100%;
+  background: #2d3e50;
+  color: white;
+  padding: 15px;
+  font-size: 18px;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
 }
-.accordion {
-    margin-top: 20px;
+
+.add-to-cart:hover {
+  background: #1b2838;
 }
+
+/* ✅ Accordion Fix */
 .accordion-item {
-    border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
 }
+
 .accordion-title {
-    font-size: 18px;
-    font-weight: bold;
-    cursor: pointer;
-    padding: 10px;
-    background: #f4f4f4;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 10px;
+  background: #f4f4f4;
+  transition: background 0.3s ease-in-out;
 }
+
+.accordion-title:hover {
+  background: #e0e0e0;
+}
+
 .accordion-content {
-    display: none;
-    padding: 10px;
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.3s ease-in-out;
+  padding: 0 10px;
 }
-.active .accordion-content {
-    display: block;
+
+/* ✅ Expand when active */
+.accordion-item.active .accordion-content {
+  max-height: 500px; /* Adjust based on content */
+  padding: 10px;
 }
-@media (max-width: 768px) {
-    .storefront .container {
-        grid-template-columns: 1fr;
-        text-align: center;
-    }
-    .nav-list {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        background: white;
-        width: 100%;
-        padding: 10px 0;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    }
-    .nav-list.active {
-        display: flex;
-    }
-    .menu-toggle {
-        display: flex;
-        flex-direction: column;
-        cursor: pointer;
-    }
+
+/* 📦 Bundle Section */
+.bundle-section {
+  border: 1px solid #ccc;
+  padding: 15px;
+  border-radius: 8px;
+  background: #f9f9f9;
+}
+
+/* ✅ Bundle List */
+.bundle-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.bundle-section li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+/* ✅ Total Price */
+#total-price {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+/* ✅ Choose Bundle Button */
+#choose-bundle {
+  width: 100%;
+  background: #2d3e50;
+  color: white;
+  padding: 10px;
+  font-size: 16px;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+#choose-bundle:hover {
+  background: #1b2838;
 }
