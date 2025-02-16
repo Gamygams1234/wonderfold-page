@@ -1,0 +1,158 @@
+:root {
+    --primary-color: #4A6475;
+    --secondary-color: #2D3E50;
+    --background-color: white;
+    --text-color: hsl(182, 80%, 12%);
+    --hover-color: #3A5568;
+
+    --container-max-width: 1200px;
+    --top-bar-color: #8BB8B5;
+}
+
+a{
+    transition: .2s all ease-in-out;
+}
+a:hover {
+    color: var(--hover-color);
+}
+
+body {
+    margin: 0;
+    font-family: Outfit, sans-serif;
+    overflow-x: hidden; /* Prevents horizontal scrolling */
+}
+
+.container {
+
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding: 0 1rem;
+    overflow: hidden; /* Ensures no content overflows */
+}
+
+.top-bar {
+    background: var(--top-bar-color);
+    color: var(--text-color);
+    text-align: center;
+    padding: 0.5rem 0;
+    font-size: 0.875rem;
+}
+
+.navbar {
+    font-weight: 400;
+   
+    background: var(--background-color);
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1);
+    padding: 0.75rem 0;
+}
+
+.navbar .container {
+    width: calc(100%-4rem);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: var(--text-color);
+    white-space: nowrap;
+}
+
+.nav-list {
+    list-style: none;
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+
+}
+
+.nav-list a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 0.75rem;
+    display: block;
+    transition: color 0.3s ease;
+}
+
+.nav-list a:hover {
+    color: var(--hover-color);
+}
+
+.nav-icons {
+    display: flex;
+    align-items: center;
+    
+}
+
+.nav-icons a:not(:last-child) {
+display: none;
+}
+.menu-toggle {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.bar {
+    background: var(--text-color);
+    height: 0.188rem;
+    width: 1.563rem;
+    margin: 0.313rem 0;
+    border-radius: 0.125rem;
+}
+
+/* Small devices (phones, 576px and up) */
+@media (min-width: 576px) {
+    .nav-list {
+        flex-direction: row;
+        justify-content: flex-start;
+        display: flex;
+        
+
+    }
+    .menu-toggle {
+        display: none;
+    }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    .nav-list {
+       flex-wrap: wrap;
+        
+
+    }
+
+    .nav-icons a:not(:last-child) {
+
+        display: block;
+        }
+    .nav-icons a{
+        margin-left: 1rem;
+    }
+    .navbar .container {
+        flex-wrap: nowrap;
+    }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+    .nav-list {
+        display: flex;
+    
+    }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+    .container {
+        max-width: var(--container-max-width);
+    }
+}
