@@ -98,23 +98,23 @@ strong {
   }
   .storefront .container {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 2fr 1fr;
     grid-template-areas:
-      "image breadcrumbs"
+      "image  breadcrumbs"
       "image name"
       "image price"
-      "image description"
       "image quantity"
       "image bundle"
-      "image info";
+      "description description"
+      "info info";
+
     align-items: start;
     overflow: visible; /* ✅ Ensure sticky works */
   }
 
   /* ✅ Sticky Image */
   .product-image {
-    position: sticky;
-    top: 4rem; /* Adjust spacing from the top */
+
     align-self: start;
     height: auto; /* Fix incorrect height */
   }
@@ -122,8 +122,7 @@ strong {
   .image img {
     width: 100%;
     height: auto;
-    max-height: 80vh; /* Prevents excessive size */
-    object-fit: cover;
+
     border-radius: 8px;
   }
 }
