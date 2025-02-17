@@ -146,12 +146,18 @@ display: none;
 @media (min-width: 992px) {
     .nav-list {
         display: flex;
+
     
     }
 }
 
 /* Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {
+    .nav-list {
+        display: flex;
+        justify-content: center;
+    
+    }
     .container {
         max-width: var(--container-max-width);
     }

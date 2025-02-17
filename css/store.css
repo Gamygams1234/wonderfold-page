@@ -1,9 +1,31 @@
 /* ✅ Storefront Layout */
+
+:root {
+    --primary-color: #4A6475;
+    --secondary-color: #2D3E50;
+    --background-color: white;
+    --text-color: hsl(182, 80%, 12%);
+    --hover-color: #3A5568;
+
+    --container-max-width: 1200px;
+    --top-bar-color: #8BB8B5;
+}
+
+strong{
+    font-weight: 600;
+}
+
+.accordion-content{
+    line-height: 1.5;
+}
+
 .storefront {
   /* width: 100%; */
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
+
+  color: var(--text-color)
 }
 
 /* 📱 Mobile Layout - Stacked Structure */
@@ -17,7 +39,18 @@
     "image"
     "info"
     "bundle";
-  gap: 20px;
+
+    grid-template-areas:
+    "breadcrumbs"
+    "name"
+    "price"
+    "image"
+    "description"
+    "quantity"
+    "bundle"
+    "info";
+    row-gap: 20px; /* Controls vertical spacing */
+    column-gap: 5rem; /* Controls horizontal spacing */
 }
 
 /* 🔹 Grid Areas */
@@ -39,15 +72,38 @@
 .price {
   grid-area: price;
 }
+.description {
+  grid-area: description;
+}
+.quantity-counter{
+    grid-area: quantity;
+}
+.description{
+    line-height: 1.25;
+}
+
+.product-image{
+    height: 100%;
+    position: relative;
+}
+.product-image .image{
+    position: sticky;
+    top: 0;
+}
 
 /* 🖥️ Desktop Layout - Proper Side-by-Side Structure */
-@media (min-width: 1024px) {
+@media (min-width: 768px) {
+    h1{
+        font-size: 1.5rem;
+    }
   .storefront .container {
     grid-template-columns: 1fr 1fr;
     grid-template-areas:
       "image breadcrumbs"
       "image name"
       "image price"
+      "image description"
+      "image quantity"
       "image bundle"
       "image info";
 
@@ -96,36 +152,57 @@
   font-weight: bold;
 }
 
+.total-price{
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
+
+
+
+
 /* 🎛️ Quantity Selector */
+
+
+.quantity-counter{
+    display: flex;
+    align-items: center;
+
+}
 .quantity-container {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 10px;
-  margin-top: 10px;
+  height: 100%;
+
 }
 
 .quantity-container button {
-  background: #2d3e50;
+  background: var(--text-color);
   color: white;
   border: none;
-  padding: 5px 10px;
+height: 100%;
+ 
   cursor: pointer;
-  font-size: 18px;
+  font-size: 1.5rem ;
   border-radius: 5px;
 }
 
 /* 🛍️ Add to Cart Button */
 .add-to-cart {
   width: 100%;
-  background: #2d3e50;
+  background: var(--text-color);
   color: white;
-  padding: 15px;
+  padding: 1rem;
   font-size: 18px;
   text-transform: uppercase;
   border: none;
   cursor: pointer;
   border-radius: 8px;
+  flex-grow: 1;
+  margin-left: 1rem;
+  transition: .2s ease-in-out all;
 }
 
 .add-to-cart:hover {
@@ -169,7 +246,11 @@
   padding: 15px;
   border-radius: 8px;
   background: #f9f9f9;
+  
+
 }
+
+
 
 /* ✅ Bundle List */
 .bundle-section ul {
@@ -181,7 +262,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 0;
+  padding: 2rem 0;
   border-bottom: 1px solid #ddd;
 }
 
