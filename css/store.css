@@ -1,22 +1,22 @@
 /* ✅ Storefront Layout */
 
 :root {
-    --primary-color: #4A6475;
-    --secondary-color: #2D3E50;
-    --background-color: white;
-    --text-color: hsl(182, 80%, 12%);
-    --hover-color: #3A5568;
+  --primary-color: #4a6475;
+  --secondary-color: #2d3e50;
+  --background-color: white;
+  --text-color: hsl(182, 80%, 12%);
+  --hover-color: #3a5568;
 
-    --container-max-width: 1200px;
-    --top-bar-color: #8BB8B5;
+  --container-max-width: 1200px;
+  --top-bar-color: #8bb8b5;
 }
 
-strong{
-    font-weight: 600;
+strong {
+  font-weight: 600;
 }
 
-.accordion-content{
-    line-height: 1.5;
+.accordion-content {
+  line-height: 1.5;
 }
 
 .storefront {
@@ -25,7 +25,7 @@ strong{
   margin: 0 auto;
   padding: 20px;
 
-  color: var(--text-color)
+  color: var(--text-color);
 }
 
 /* 📱 Mobile Layout - Stacked Structure */
@@ -40,7 +40,7 @@ strong{
     "info"
     "bundle";
 
-    grid-template-areas:
+  grid-template-areas:
     "breadcrumbs"
     "name"
     "price"
@@ -49,8 +49,8 @@ strong{
     "quantity"
     "bundle"
     "info";
-    row-gap: 20px; /* Controls vertical spacing */
-    column-gap: 5rem; /* Controls horizontal spacing */
+  row-gap: 20px; /* Controls vertical spacing */
+  column-gap: 5rem; /* Controls horizontal spacing */
 }
 
 /* 🔹 Grid Areas */
@@ -75,28 +75,29 @@ strong{
 .description {
   grid-area: description;
 }
-.quantity-counter{
-    grid-area: quantity;
+.quantity-counter {
+  grid-area: quantity;
 }
-.description{
-    line-height: 1.25;
+.description {
+  line-height: 1.25;
 }
 
-.product-image{
-    height: 100%;
-    position: relative;
+.product-image {
+  height: 100%;
+  position: relative;
 }
-.product-image .image{
-    position: sticky;
-    top: 0;
+.product-image .image {
+  position: sticky;
+  top: 0;
 }
 
 /* 🖥️ Desktop Layout - Proper Side-by-Side Structure */
 @media (min-width: 768px) {
-    h1{
-        font-size: 1.5rem;
-    }
+  h1 {
+    font-size: 1.5rem;
+  }
   .storefront .container {
+    display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-areas:
       "image breadcrumbs"
@@ -106,11 +107,26 @@ strong{
       "image quantity"
       "image bundle"
       "image info";
-
     align-items: start;
+    overflow: visible; /* ✅ Ensure sticky works */
+  }
+
+  /* ✅ Sticky Image */
+  .product-image {
+    position: sticky;
+    top: 4rem; /* Adjust spacing from the top */
+    align-self: start;
+    height: auto; /* Fix incorrect height */
+  }
+
+  .image img {
+    width: 100%;
+    height: auto;
+    max-height: 80vh; /* Prevents excessive size */
+    object-fit: cover;
+    border-radius: 8px;
   }
 }
-
 /* ✅ Breadcrumbs */
 .breadcrumbs {
   font-size: 14px;
@@ -152,22 +168,16 @@ strong{
   font-weight: bold;
 }
 
-.total-price{
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-  }
-
-
-
-
+.total-price {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
 
 /* 🎛️ Quantity Selector */
 
-
-.quantity-counter{
-    display: flex;
-    align-items: center;
-
+.quantity-counter {
+  display: flex;
+  align-items: center;
 }
 .quantity-container {
   display: flex;
@@ -175,17 +185,16 @@ strong{
   align-items: center;
   gap: 10px;
   height: 100%;
-
 }
 
 .quantity-container button {
   background: var(--text-color);
   color: white;
   border: none;
-height: 100%;
- 
+  height: 100%;
+
   cursor: pointer;
-  font-size: 1.5rem ;
+  font-size: 1.5rem;
   border-radius: 5px;
 }
 
@@ -202,7 +211,7 @@ height: 100%;
   border-radius: 8px;
   flex-grow: 1;
   margin-left: 1rem;
-  transition: .2s ease-in-out all;
+  transition: 0.2s ease-in-out all;
 }
 
 .add-to-cart:hover {
@@ -246,11 +255,7 @@ height: 100%;
   padding: 15px;
   border-radius: 8px;
   background: #f9f9f9;
-  
-
 }
-
-
 
 /* ✅ Bundle List */
 .bundle-section ul {
