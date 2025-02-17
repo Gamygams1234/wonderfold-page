@@ -19,7 +19,7 @@ document.querySelectorAll(".accordion-title").forEach(item => {
 const product = {
     name: "W4 Elite Pro Stroller Wagon",
     price: 699.00,
-    description: `Venture out effortlessly with the W4 Elite Pro Stroller Wagon. It features elevated, reclining seats for a better view, spacious seating for up to four, a lightweight aluminum frame, safety features, and sun protection. Versatile seating can face forward or backward, with removable frames and front-zippered entrances for easy access. With WonderFold, focus on creating lasting memories, not just managing logistics.`,
+    description: `<h2 class="subheading">The Perfect Wagon</h2>Venture out effortlessly with the W4 Elite Pro Stroller Wagon. It features elevated, reclining seats for a better view, spacious seating for up to four, a lightweight aluminum frame, safety features, and sun protection. Versatile seating can face forward or backward, with removable frames and front-zippered entrances for easy access. With WonderFold, focus on creating lasting memories, not just managing logistics.`,
     features: `
         <ul>
             <li><strong>Spacious Seating:</strong> Seats up to four children comfortably.</li>
@@ -46,7 +46,7 @@ const product = {
 
 document.getElementById("product-name").innerText = product.name;
 document.getElementById("product-price").innerText = `$${product.price.toFixed(2)}`;
-document.getElementById("product-description").innerText = product.description;
+document.getElementById("product-description").innerHTML = product.description;
 document.getElementById("features").innerHTML = product.features;
 document.getElementById("materials-care").innerHTML = product.materials;
 
