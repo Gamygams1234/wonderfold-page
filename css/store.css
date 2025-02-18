@@ -4,7 +4,7 @@
     --primary-color: #4a6475;
     --secondary-color: #2d3e50;
     --background-color: white;
-    --text-color: hsl(182, 80%, 12%);
+    --text-color: #063537;
     --hover-color: #3a5568;
   
     --container-max-width: 1200px;
@@ -35,22 +35,17 @@
   .storefront .container {
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-areas:
-      "breadcrumbs"
-      "name"
-      "price"
-      "image"
-      "info"
-      "bundle";
-  
+   
     grid-template-areas:
       "breadcrumbs"
       "name"
       "price"
       "image"
       "description"
+      "options"
       "quantity"
       "bundle"
+        "infokeys"
       "info";
     row-gap: 20px; /* Controls vertical spacing */
     column-gap: 2rem; /* Controls horizontal spacing */
@@ -59,6 +54,11 @@
   /* 🔹 Grid Areas */
   .breadcrumbs {
     grid-area: breadcrumbs;
+  }
+  .info-keys{
+    grid-area: infokeys;
+    width: 100%;
+
   }
   .product-image {
     grid-area: image;
@@ -84,36 +84,39 @@
   .description {
     line-height: 1.25;
   }
+  .product-options{
+    grid-area: options;
+  }
   
   .product-image {
     height: 100%;
     position: relative;
   }
   .product-image .image {
-    position: sticky;
     top: 0;
   }
   
   /* 🖥️ Desktop Layout - Proper Side-by-Side Structure */
   @media (min-width: 768px) {
     h1 {
-      font-size: 1.5rem;
+      font-size: 2rem;
     }
     .storefront .container {
       display: grid;
       grid-template-columns: 1.5fr 1fr;
       grid-template-areas:
-        "breadcrumbs  breadcrumbs"
-        "image name"
-        "image price"
-        "image quantity"
-        "image bundle"
-        "description description"
-        "info info";
-  
-        row-gap: 1rem;
+          "breadcrumbs breadcrumbs"
+          "image name"
+          "image price"
+          "image options"
+          "image quantity"
+          "image bundle"
+          "image infokeys"
+          "description description"
+          "info info";
+      row-gap: 1rem;
       align-items: start;
-      overflow: visible; /* ✅ Ensure sticky works */
+ 
     }
   
     .subheading{
@@ -122,21 +125,76 @@
         font-weight: 600;
         margin-bottom: 1rem;
     }
-    /* ✅ Sticky Image */
-    .product-image {
-  
-      align-self: start;
-      height: auto; /* Fix incorrect height */
-      margin-bottom: 2rem;
-    }
-  
-    .image img {
-      width: 100%;
-      height: auto;
-  
-      border-radius: 8px;
-    }
+
   }
+
+  /* ✅ Styling for Color Selection */
+.color-selection {
+  margin-bottom: 2rem;
+}
+
+/* .color-selection label {
+  margin-bottom: 15px;
+} */
+
+.color-options {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.color-option {
+  display: flex;
+ 
+  align-items: center;
+  gap: 5px;
+  font-weight: bold;
+  cursor: pointer;
+
+}
+
+.color-option input {
+  display: none;
+}
+
+.color-circle {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: inline-block;
+  border: 2px solid transparent;
+}
+
+/* ✅ Selected Color Effect */
+.color-option input:checked + .color-circle {
+  border: 2px solid #222;
+}
+
+/* ✅ Styling for Seater Selection */
+.seater-options {
+  display: flex;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  overflow: hidden;
+  margin-top: 1rem;
+
+}
+
+.seater-btn {
+  flex: 1;
+  flex-grow: 1;
+  padding: 10px;
+  font-weight: bold;
+  border: none;
+  background: #f5f5f5;
+  cursor: pointer;
+}
+
+.seater-btn.active {
+  background: #e8eded;
+}
   /* ✅ Breadcrumbs */
   .breadcrumbs {
     font-size: 14px;
@@ -167,9 +225,9 @@
   }
   
   /* 🛒 Product Info */
-  .product-info h1 {
-    font-size: 1.8rem;
-    font-weight: bold;
+ h1 {
+    font-size: 1.5rem;
+    /* font-weight: bold; */
   }
   
   .price {
@@ -228,36 +286,51 @@
     background: #1b2838;
   }
   
-  /* ✅ Accordion Fix */
-  .accordion-item {
-    border-bottom: 1px solid #ccc;
-  }
-  
-  .accordion-title {
-    font-size: 18px;
-    font-weight: bold;
-    cursor: pointer;
-    padding: 10px;
-    background: #f4f4f4;
-    transition: background 0.3s ease-in-out;
-  }
-  
-  .accordion-title:hover {
-    background: #e0e0e0;
-  }
-  
-  .accordion-content {
-    overflow: hidden;
-    max-height: 0;
-    transition: max-height 0.3s ease-in-out;
-    padding: 0 10px;
-  }
-  
-  /* ✅ Expand when active */
-  .accordion-item.active .accordion-content {
-    max-height: 500px; /* Adjust based on content */
-    padding: 10px;
-  }
+/* ✅ Accordion Item */
+.accordion-item {
+  border-bottom: 1px solid #ccc;
+}
+
+.accordion-title {
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 10px;
+  background: #f4f4f4;
+  display: flex;
+  justify-content: space-between; /* Keeps text & arrow apart */
+  align-items: center;
+  transition: background 0.3s ease-in-out;
+}
+
+/* ✅ Style the SVG Arrow */
+.accordion-title svg {
+  /* width: 16px;  /* Adjust size */
+  /* height: 16px; */ 
+
+
+  transition: transform 0.3s ease-in-out;
+}
+
+/* ✅ Rotate Arrow When Active */
+.accordion-item.active .accordion-title svg {
+  transform: rotate(180deg);
+  transition: transform 0.3s ease-in-out;
+}
+
+/* ✅ Accordion Content (Hidden by Default) */
+.accordion-content {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.3s ease-in-out;
+  padding: 0 10px;
+}
+
+/* ✅ Expand Content When Active */
+.accordion-item.active .accordion-content {
+  max-height: 500px; /* Adjust based on content */
+  padding: 10px;
+}
   
   /* 📦 Bundle Section */
   .bundle-section {
@@ -265,30 +338,42 @@
     padding: 15px;
     border-radius: 8px;
     background: #f9f9f9;
-  }
-  
-  /* ✅ Bundle List */
-  .bundle-section ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .bundle-section li {
+}
+
+/* ✅ Bundle Items */
+.bundle-item {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 2rem 0;
+    gap: 15px;
+    padding: 10px 0;
     border-bottom: 1px solid #ddd;
-  }
-  
-  /* ✅ Total Price */
-  #total-price {
+}
+
+/* ✅ Bundle Checkbox */
+.bundle-item input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+/* ✅ Thumbnail Styling */
+.bundle-thumbnail {
+    width: 50px;  /* Adjust size */
+    height: 50px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+/* ✅ Total Price */
+#total-price {
     font-size: 1.2rem;
     font-weight: bold;
-  }
-  
-  /* ✅ Choose Bundle Button */
-  #choose-bundle {
+    display: block;
+    margin-top: 10px;
+}
+
+/* ✅ Choose Bundle Button */
+#choose-bundle {
     width: 100%;
     background: #2d3e50;
     color: white;
@@ -298,8 +383,9 @@
     border: none;
     cursor: pointer;
     border-radius: 8px;
-  }
-  
-  #choose-bundle:hover {
+    margin-top: 10px;
+}
+
+#choose-bundle:hover {
     background: #1b2838;
-  }
+}

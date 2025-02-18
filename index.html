@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="/css/header.css" />
     <link rel="stylesheet" href="/css/store.css" />
     <link rel="stylesheet" href="/css/thumbnail.css" />
+    <link rel="stylesheet" href="/css/carousel.css" />
 
     <!-- <script defer src="script.js"></script> -->
 </head>
@@ -96,13 +97,49 @@
             <h1 id="product-name" class="product-name"></h1>
             <p class="price" id="product-price"></p>
 
-            <div class="product-image">
-                <div class="image">
-                    <img src="./images/lifestyle/w4-Elite-Pro-Lifestyle-02.jpg" alt="W4 Elite Pro Stroller Wagon" />
-                </div>
+                <div class="product-image">
+                    <div class="image carousel">
+                        <button class="prev" onclick="prevSlide()">&#10094;</button>
+                        <div class="carousel-images">
+                            <img src="images/lifestyle/w4-Elite-Pro-Lifestyle-02.jpg" class="carousel-item" alt="W4 Elite Pro Stroller Wagon">
+                            <img src="images/lifestyle/w4-Elite-Pro-Lifestyle-03.jpg" class="carousel-item" alt="W4 Elite Pro Stroller Wagon">
+                            <img src="images/lifestyle/w4-Elite-Pro-Lifestyle-04.jpg" class="carousel-item" alt="W4 Elite Pro Stroller Wagon">
+                            <img src="images/lifestyle/w4-Elite-Pro-Lifestyle-05.jpg" class="carousel-item" alt="W4 Elite Pro Stroller Wagon">
+                        </div>
+                        <button class="next" onclick="nextSlide()">&#10095;</button>
+                    </div>
+        
+            
             </div>
             <p id="product-description" class="description"></p>
 
+
+
+            <div class="product-options">
+                <!-- ✅ Color Selection -->
+                <div class="color-selection">
+                    <label class="choose-text">Choose a Color:</label>
+                    <div class="color-options">
+                        <label class="color-option">
+                            <input type="radio" name="color" value="jet-black" checked />
+                            <span class="color-circle" style="background-color: black;"></span> Jet Black
+                        </label>
+                        <label class="color-option">
+                            <input type="radio" name="color" value="charcoal-gray" />
+                            <span class="color-circle" style="background-color: gray;"></span> Charcoal Gray
+                        </label>
+                    </div>
+                </div>
+            
+                <!-- ✅ Seater Selection -->
+                <div class="seater-selection">
+                    <label>Choose Seating:</label>
+                    <div class="seater-options">
+                        <button class="seater-btn active" data-seat="2">2 Seater</button>
+                        <button class="seater-btn" data-seat="4">4 Seater</button>
+                    </div>
+                </div>
+            </div>
 
             <div class="quantity-counter">
                 <div class="quantity-container">
@@ -112,26 +149,36 @@
                 </div>
                 <button class="add-to-cart">Add to Cart</button>
             </div>
-        
-            <div class="product-info">
-                <div class="accordion">
-                    <div class="accordion-item">
-                        <div class="accordion-title">Materials & Care</div>
-                        <div class="accordion-content" id="materials-care"></div>
-                    </div>
-                    <div class="accordion-item">
-                        <div class="accordion-title">Features</div>
-                        <div class="accordion-content" id="features"></div>
-                    </div>
-                </div>
-            </div>
+        <div class="product-info">
 
-            <div class="bundle-section">
-                <h2>Upgrade Your Ride</h2>
-                <ul id="bundle-list"></ul>
-                <p class="total-price">Total: <span id="total-price">$0.00</span></p>
-                <button id="choose-bundle">Choose this bundle</button>
+      
+            <div class="accordion-item">
+                <div class="accordion-title">
+                    Materials & Care
+                    <svg class="accordion-arrow" xmlns="http://www.w3.org/2000/svg" width="10" height="7"><script xmlns="" src="chrome-extension://mfidniedemcgceagapgdekdbmanojomk/js/elephant.js"/><path d="M1 .799l4 4 4-4" stroke="#063537" stroke-width="2" fill="none" fill-rule="evenodd"/></svg>
+                </div>
+                <div class="accordion-content" id="materials-care"></div>
             </div>
+            
+            <div class="accordion-item">
+                <div class="accordion-title">
+                    Features
+                    <svg class="accordion-arrow" xmlns="http://www.w3.org/2000/svg" width="10" height="7"><script xmlns="" src="chrome-extension://mfidniedemcgceagapgdekdbmanojomk/js/elephant.js"/><path d="M1 .799l4 4 4-4" stroke="#063537" stroke-width="2" fill="none" fill-rule="evenodd"/></svg>
+                </div>
+                <div class="accordion-content" id="features"></div>
+            </div>
+        </div>
+
+
+        <div class="info-keys">
+            <img src="images/info/image.png" alt="Removable Front & Back Frame">
+        </div>
+
+        <div class="bundle-section">
+            <h2>Upgrade Your Ride</h2>
+            <ul id="bundle-list"></ul>
+            <p class="total-price">Total: <span id="total-price">$699.00</span></p>
+            <button id="choose-bundle">Choose this bundle</button>
         </div>
     </section>
 
@@ -141,7 +188,8 @@
                 alt="" />
         </div>
     </section>
-    <script src="./scripts/script.js"></script>
 </body>
+<script src="./scripts/script.js"></script>
+<script src="./scripts/carousel.js"></script>
 
 </html>

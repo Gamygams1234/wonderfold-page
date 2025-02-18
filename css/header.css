@@ -109,7 +109,7 @@ display: none;
 }
 
 /* Small devices (phones, 576px and up) */
-@media (min-width: 576px) {
+@media (min-width: 768px) {
     .nav-list {
         flex-direction: row;
         justify-content: flex-start;

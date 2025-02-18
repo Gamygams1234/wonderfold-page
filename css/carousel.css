@@ -1,0 +1,49 @@
+/* ✅ Make sure the carousel container doesn’t move */
+.carousel {
+    position: relative;
+    max-width: 100%;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+/* ✅ Keep the images in a row */
+.carousel-images {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+/* ✅ Make sure images do not stretch */
+.carousel-item {
+    min-width: 100%;
+    max-width: 100%;
+    border-radius: 8px;
+}
+
+/* ✅ Fix Navigation Buttons */
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    border-radius: 50%;
+    z-index: 10; /* 🔥 Ensures buttons always stay on top */
+}
+
+/* ✅ Left and right button positioning */
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
+
+/* ✅ Prevent buttons from disappearing */
+.prev:hover, .next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
